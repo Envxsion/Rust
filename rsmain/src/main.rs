@@ -1,4 +1,5 @@
 //cd -> cargo new rsmain -> cargo build -> cargo run
+use std::io;
 
 
 fn main() {
@@ -56,4 +57,11 @@ fn main() {
         let arr: [i32; 5] = [1, 2, 3, 4, 5]; //def type for 5 elements in one go
         println!("arr: {}",arr[3])
     }
+
+    //User input
+    let mut inp = String::new(); //grabbing new function from module String 
+    io::stdin().read_line(&mut inp).expect("failed to read line"); //mutable reference to the inp var
+    println!("Hi, {}", inp); 
+
+
 }
