@@ -62,6 +62,14 @@ fn main() {
     let mut inp = String::new(); //grabbing new function from module String 
     io::stdin().read_line(&mut inp).expect("failed to read line"); //mutable reference to the inp var
     println!("Hi, {}", inp); 
+    let z = x/y; 
+    println!("{}/{}={}",x,y,z);
 
+    //Type casting
+    let a: i64 = 1280000;
+    let b: i32 = 2648;
+    let z = a/b as i64;
+    println!("{}", z);
+    
 
 }
