@@ -1,3 +1,5 @@
+mod sha1_crack;
+
 fn main() {
-    println!("Hello, world!");
+    sha1_crack::sha1_c();
 }
