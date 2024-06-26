@@ -1,40 +1,41 @@
+mod error;
 mod sha1_crack;
+mod subdomain; 
 
-fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
-    if x.len() > y.len() {
-        x
-    } else {
-        y
+use std::env;
+use std::error::Error;
+use crate::error::Error as CustomError;
+
+fn main() {
+    if let Err(e) = run() {
+        eprintln!("Error: {}", e);
     }
 }
 
-fn main() {
-    //cargo run wordlist.txt 7c6a61c68ef8b9b6b061b28c348bc1ed7921cb53
-    sha1_crack::sha1_c().map_err(|err| println!("{:?}", err)).ok();
+fn run() -> Result<(), Box<dyn Error>> {
+    let args: Vec<String> = env::args().collect();
 
-    // Smart Pointers
-    let b = Box::new(5);
-    println!("b = {}", b);
-
-    // Define a recursive enum for a linked list
-    #[derive(Debug)]
-    enum List {
-        Cons(i32, Box<List>),  // Cons is short for "construct"
-        Nil,  // Represents the end of the list
+    if args.len() < 2 {
+        return Err(CustomError::NoArgs.into());
     }
 
-    // Create a linked list: 1 -> 2 -> 3 -> Nil
-    let list = List::Cons(1,
-        Box::new(List::Cons(2,
-            Box::new(List::Cons(3,
-                Box::new(List::Nil))))));
+    match args[1].as_str() {
+        "sha1_c" => {
+            if args.len() != 4 {
+                return Err(CustomError::CliUsage.into());
+            }
+            sha1_crack::sha1_c(&args[2], &args[3])?;
+        },
+        "subd_s" => {
+            if args.len() != 3 {
+                return Err(CustomError::CliUsage.into());
+            }
+            subdomain::subd_s(&args[2])?;
+        },
+        _ => {
+            return Err(CustomError::CliUsage.into());
+        },
+    }
 
-    println!("list = {:?}", list);
-
-    //Lifetime Annotations
-    let string1 = String::from("COuldbeBiggeR");
-    let string2 = String::from("AmIBig");
-    let result = longest(string1.as_str(), string2.as_str());
-    println!("Longest string is {}", result);
-
+    Ok(())
 }
