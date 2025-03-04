@@ -1,6 +1,7 @@
 //cd -> cargo new rsmain -> cargo build -> cargo run
 use std::io;
 mod collatzseq;
+mod m1830_Jugs;
 
 fn main() {
     println!("Imported pub fn from another file with mod!");
@@ -97,6 +98,7 @@ fn main() {
     
     //IMporting a file
     println!("Using imported function -> ");
+    m1830_Jugs::jugs(4);
     collatzseq::collatz(5);
     assert_eq!(collatzseq::collatz(11), 15);
     

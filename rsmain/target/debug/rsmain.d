@@ -1,1 +1,1 @@
-C:\Users\cyn0v\OneDrive\Documents\GitHub\Rust\rsmain\target\debug\rsmain.exe: C:\Users\cyn0v\OneDrive\Documents\GitHub\Rust\rsmain\src\collatzseq.rs C:\Users\cyn0v\OneDrive\Documents\GitHub\Rust\rsmain\src\main.rs
+C:\Users\cyn0v\Documents\GitHub\Rust\rsmain\target\debug\rsmain.exe: C:\Users\cyn0v\Documents\GitHub\Rust\rsmain\src\collatzseq.rs C:\Users\cyn0v\Documents\GitHub\Rust\rsmain\src\m1830_Jugs.rs C:\Users\cyn0v\Documents\GitHub\Rust\rsmain\src\main.rs
